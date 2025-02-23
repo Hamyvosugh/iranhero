@@ -9,6 +9,31 @@ interface CategoryCardProps {
   gradient?: string;
 }
 
+// Sample data for heroes
+const heroesData = [
+  {
+    id: 1,
+    name: "جاویدنام مجیدرضا رهنورد ",
+    code: "۱۲۳۴۵",
+    description: "جاویدنام راه آزادی وطن که در جریان قیام ملی ۱۴۰۱ در شهر مشهد به دست نیروهای سرکوب گر بازداشت و ...",
+    image: "/image/rahnavard_majidreza2022-1024x684.jpg"
+  },
+  {
+    id: 2,
+    name: " جاویدنام رحمت الله حسین زاده",
+    code: "۶۷۸۹۰",
+    description: "  سرتیپ خلبان  رحمت الله  حسین زاده  سورجانی از جان گذشتگان وطن در جنگ ۸ ساله عراق که در ...",
+    image: "/image/qewerw.jpg"
+  },
+  {
+    id: 3,
+    name: "فاطمه سپهری ",
+    code: "۱۱۲۲۳",
+    description: "فاطمه سپهری بانوی ایرانی که در پی اعتراضات شجاعانه بر علیه ظلم سیستماتیک در ایران در تاریخ ...  ",
+    image: "/image/01000000-0aff-0242-1723-08dbce56744d_w1200_r1.avif"
+  }
+];
+
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-right font-[vazir]" dir="rtl">
@@ -26,7 +51,6 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4 space-x-reverse">
-              <span>شماره تماس: ۱۲۳۴۵۶۷۸ ۰۰۴۹</span>
               <span className="border-r border-blue-700 pr-4">پست الکترونیک: info@heroes.gov</span>
             </div>
             <div className="flex items-center space-x-4 space-x-reverse">
@@ -44,7 +68,7 @@ const HomePage = () => {
             <div className="flex items-center space-x-4 space-x-reverse">
               <img src="/image/شیر_و_خورشید_بدون_شمشیر (2).png" alt="نشان ملی" className="h-12 w-22" />
               <div>
-                <span className="text-xl font-bold text-blue-900 block">پهلوانان ملی ایران</span>
+                <span className="text-xl font-bold text-blue-950 block">پهلوانان ملی ایران</span>
                 <span className="text-sm text-gray-600">پایگاه رسمی ثبت و گرامیداشت</span>
               </div>
             </div>
@@ -62,7 +86,7 @@ const HomePage = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-950 to-blue-900 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -151,15 +175,19 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-12">پهلوانان برگزیده ماه</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gray-100"></div>
+            {heroesData.map((hero) => (
+              <div key={hero.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <img 
+                  src={hero.image} 
+                  alt={`تصویر ${hero.name}`} 
+                  className="w-full h-48 object-cover"
+                />
                 <div className="p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-bold text-gray-900">نام پهلوان</h3>
-                    <span className="text-sm text-blue-900">کد پهلوانی: ۱۲۳۴۵</span>
+                    <h3 className="text-lg font-bold text-gray-900">{hero.name}</h3>
+                    <span className="text-sm text-blue-900">کد پهلوانی: {hero.code}</span>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4">توضیح مختصر درباره پهلوان و دستاوردهای ایشان</p>
+                  <p className="text-gray-600 text-sm mb-4">{hero.description}</p>
                   <a href="#" className="text-blue-900 hover:text-blue-700 text-sm flex items-center">
                     مشاهده پرونده کامل
                     <ExternalLink className="h-4 w-4 mr-1" />
@@ -176,7 +204,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <img src="/api/placeholder/48/48" alt="نشان ملی" className="h-16 w-16 mb-4" />
+              <img src="/image/شیر_و_خورشید_بدون_شمشیر (2).png" alt="نشان ملی" className="h-24 w-30 mb-4" />
               <p className="text-gray-400 text-sm">
                 پایگاه رسمی ثبت و گرامیداشت پهلوانان ملی ایران
               </p>
@@ -193,7 +221,6 @@ const HomePage = () => {
             <div>
               <h3 className="text-lg font-bold mb-4">اطلاعات تماس</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
-        
               </ul>
             </div>
             <div>
