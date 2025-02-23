@@ -1,101 +1,252 @@
-import Image from "next/image";
+'use client';
+import React from 'react';
+import { Menu, ChevronDown, Search, Star, Book, Award, Brain, Palette, Users, ExternalLink } from 'lucide-react';
 
-export default function Home() {
+interface CategoryCardProps {
+  icon: React.ReactElement<{ className?: string }>;
+  title: string;
+  description: string;
+  gradient?: string;
+}
+
+const HomePage = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-gray-50 text-right font-[vazir]" dir="rtl">
+      {/* Custom Vazir Font Import */}
+      <style jsx global>{`
+        @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
+        
+        * {
+          font-family: 'Vazir', system-ui, -apple-system, sans-serif;
+        }
+      `}</style>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Top Bar */}
+      <div className="bg-blue-900 text-white py-1">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center text-sm">
+            <div className="flex items-center space-x-4 space-x-reverse">
+              <span>شماره تماس: ۱۲۳۴۵۶۷۸ ۰۰۴۹</span>
+              <span className="border-r border-blue-700 pr-4">پست الکترونیک: info@heroes.gov</span>
+            </div>
+            <div className="flex items-center space-x-4 space-x-reverse">
+              <a href="#" className="hover:text-blue-200">English</a>
+              <a href="#" className="hover:text-blue-200">العربية</a>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </div>
+
+      {/* Navigation */}
+      <nav className="bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center space-x-4 space-x-reverse">
+              <img src="/image/شیر_و_خورشید_بدون_شمشیر (2).png" alt="نشان ملی" className="h-12 w-22" />
+              <div>
+                <span className="text-xl font-bold text-blue-900 block">پهلوانان ملی ایران</span>
+                <span className="text-sm text-gray-600">پایگاه رسمی ثبت و گرامیداشت</span>
+              </div>
+            </div>
+            <div className="hidden md:flex items-center space-x-6 space-x-reverse">
+              <a href="#" className="text-gray-700 hover:text-blue-900">صفحه اصلی</a>
+              <a href="#" className="text-gray-700 hover:text-blue-900">خدمات الکترونیک</a>
+              <a href="#" className="text-gray-700 hover:text-blue-900">قوانین و مقررات</a>
+              <a href="#" className="text-gray-700 hover:text-blue-900">درباره ما</a>
+              <button className="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800 transition-colors">
+                ورود به سامانه
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              سامانه جامع پهلوانان ملی ایران
+            </h1>
+            <p className="text-xl text-blue-100 mb-8">
+              ثبت، نگهداری و پاسداشت میراث پهلوانی ایران زمین
+            </p>
+            <div className="flex justify-center">
+              <div className="relative w-full max-w-2xl">
+                <input
+                  type="text"
+                  placeholder="جستجوی پهلوانان ملی..."
+                  className="w-full px-6 py-4 rounded-lg border-2 border-blue-700 bg-blue-800/50 text-white placeholder-blue-200 focus:outline-none focus:border-blue-600"
+                />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-200" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Access */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <QuickAccessButton
+              title="ثبت پهلوان جدید"
+              description="درخواست ثبت در فهرست ملی"
+              icon={<Star className="h-6 w-6" />}
+            />
+            <QuickAccessButton
+              title="استعلام وضعیت"
+              description="پیگیری درخواست‌ها"
+              icon={<Search className="h-6 w-6" />}
+            />
+            <QuickAccessButton
+              title="دریافت گواهی"
+              description="صدور گواهینامه رسمی"
+              icon={<Award className="h-6 w-6" />}
+            />
+            <QuickAccessButton
+              title="گزارش سالانه"
+              description="آمار و ارقام رسمی"
+              icon={<Book className="h-6 w-6" />}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Categories Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-2xl font-bold text-gray-900">دسته‌بندی پهلوانان ملی</h2>
+            <a href="#" className="text-blue-900 hover:text-blue-700 flex items-center">
+              مشاهده همه
+              <ChevronDown className="h-4 w-4 mr-1 rotate-90" />
+            </a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <CategoryCard 
+              icon={<Star className="h-8 w-8" />}
+              title="جاویدنامان جنگ"
+              description=" پهلوانان ایثارگر در راه وطن در نبرد با عراق"
+              gradient="bg-blue-50"
+            />
+            <CategoryCard 
+              icon={<Award className="h-8 w-8" />}
+              title="پهلوانان ورزشی"
+              description="افتخارآفرینان میادین ملی ورزشی"
+              gradient="bg-blue-50"
+            />
+            <CategoryCard 
+              icon={<Brain className="h-8 w-8" />}
+              title="نخبگان علمی"
+              description="دانشمندان و پژوهشگران برجسته"
+              gradient="bg-blue-50"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Heroes Section */}
+      <div className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-12">پهلوانان برگزیده ماه</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 bg-gray-100"></div>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg font-bold text-gray-900">نام پهلوان</h3>
+                    <span className="text-sm text-blue-900">کد پهلوانی: ۱۲۳۴۵</span>
+                  </div>
+                  <p className="text-gray-600 text-sm mb-4">توضیح مختصر درباره پهلوان و دستاوردهای ایشان</p>
+                  <a href="#" className="text-blue-900 hover:text-blue-700 text-sm flex items-center">
+                    مشاهده پرونده کامل
+                    <ExternalLink className="h-4 w-4 mr-1" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <img src="/api/placeholder/48/48" alt="نشان ملی" className="h-16 w-16 mb-4" />
+              <p className="text-gray-400 text-sm">
+                پایگاه رسمی ثبت و گرامیداشت پهلوانان ملی ایران
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-4">دسترسی سریع</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white">صفحه اصلی</a></li>
+                <li><a href="#" className="hover:text-white">خدمات الکترونیک</a></li>
+                <li><a href="#" className="hover:text-white">قوانین و مقررات</a></li>
+                <li><a href="#" className="hover:text-white">تماس با ما</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-4">اطلاعات تماس</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+        
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-4">نماد اعتماد</h3>
+              <div className="flex space-x-4 space-x-reverse">
+                <img src="/api/placeholder/80/80" alt="نماد اعتماد الکترونیکی" className="h-20 w-20" />
+                <img src="/api/placeholder/80/80" alt="نشان ملی ثبت" className="h-20 w-20" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-800">
+          <div className="container mx-auto px-4 py-4">
+            <p className="text-gray-500 text-sm text-center">
+              کلیه حقوق این سامانه متعلق به سازمان ثبت پهلوانان ملی ایران می‌باشد. ©۱۴۰۳
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
   );
+};
+
+const CategoryCard = ({ icon, title, description, gradient = "bg-blue-50" }: CategoryCardProps) => {
+  return (
+    <div className="bg-white border border-gray-200 p-6 rounded-lg hover:shadow-lg transition-shadow">
+      <div className={`flex items-center justify-center w-16 h-16 ${gradient} rounded-full mb-4 mx-auto`}>
+        {React.cloneElement(icon, { className: "text-blue-900" })}
+      </div>
+      <h3 className="text-xl font-bold text-center mb-2 text-gray-900">{title}</h3>
+      <p className="text-gray-600 text-center text-sm">{description}</p>
+    </div>
+  );
+};
+
+interface QuickAccessButtonProps {
+  title: string;
+  description: string;
+  icon: React.ReactElement;
 }
+
+const QuickAccessButton = ({ title, description, icon }: QuickAccessButtonProps) => {
+  return (
+    <a href="#" className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
+      <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-900">
+        {icon}
+      </div>
+      <div className="mr-4">
+        <h3 className="font-bold text-gray-900">{title}</h3>
+        <p className="text-sm text-gray-600">{description}</p>
+      </div>
+    </a>
+  );
+};
+
+export default HomePage;
